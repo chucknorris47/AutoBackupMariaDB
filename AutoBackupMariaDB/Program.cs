@@ -57,10 +57,13 @@ public class ConfigArguments
         checkExisting();
 
         String fullTargetDir = createSub(); 
-        String command = $"{execPath} --backup --target-dir \"{fullTargetDir}\" --user {user} --password=\"{password}\"";
+        String command = $"--backup --target-dir \"{fullTargetDir}\" --user {user} --password=\"{password}\"";
         Console.WriteLine("executing command " + command);
-        ProcessInfo = new ProcessStartInfo(command);
-        Process = Process.Start(ProcessInfo);
+        var p = new System.Diagnostics.Process();
+        p.StartInfo.FileName = execPath;
+        p.StartInfo.Arguments = command;
+        p.StartInfo.UseShellExecute = true;
+        p.Start();
     }
 }
 
