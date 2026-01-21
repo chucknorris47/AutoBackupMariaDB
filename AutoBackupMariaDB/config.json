@@ -1,0 +1,6 @@
+﻿{
+  "execPath": "C:\\xampp\\mysql\\bin\\mariabackup",
+  "targetDir": "C:\\backup",
+  "user": "root",
+  "password": "censored"
+}
