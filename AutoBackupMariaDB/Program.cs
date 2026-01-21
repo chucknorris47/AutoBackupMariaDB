@@ -43,10 +43,10 @@ public class ConfigArguments
 
     public String createSub()
     {
-        DateTime today = DateTime.Today;
+        DateOnly today = DateOnly.FromDateTime(DateTime.Now); 
         DirectoryInfo dir = new DirectoryInfo(this.targetDir);
 
-        return dir.CreateSubdirectory("backup" + today).FullName;
+        return dir.CreateSubdirectory("backup" + today.ToString().Replace(".", "")).FullName;
     }
 
 
@@ -60,7 +60,7 @@ public class ConfigArguments
         String command = $"{execPath} --backup --target-dir \"{fullTargetDir}\" --user {user} --password {password}";
         Console.WriteLine("executing command " + command);
         ProcessInfo = new ProcessStartInfo(command);
-//        Process = Process.Start(ProcessInfo);
+        Process = Process.Start(ProcessInfo);
     }
 }
 
