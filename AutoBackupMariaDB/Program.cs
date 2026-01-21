@@ -7,9 +7,9 @@ using System.Text.Json;
 public class ConfigArguments 
 {
     public String execPath { get; set; } 
-    public String targetDir  { get; set; }
-    public String user   { get; set; }
-    public String password   { get; set; }
+    public String targetDir { get; set; }
+    public String user { get; set; }
+    public String password { get; set; }
 
     public ConfigArguments()
     {
@@ -45,7 +45,6 @@ public class ConfigArguments
     {
         DateOnly today = DateOnly.FromDateTime(DateTime.Now); 
         DirectoryInfo dir = new DirectoryInfo(this.targetDir);
-
         return dir.CreateSubdirectory("backup" + today.ToString().Replace(".", "")).FullName;
     }
 
@@ -74,14 +73,10 @@ public class Program
     {
 
         ConfigArguments args = new ConfigArguments();
-
         String file = File.ReadAllText(pathToJSONfile);
-        
         args = JsonSerializer.Deserialize<ConfigArguments>(file.ToString());
              
         return args;
-
-
     }
 
     public static void Main()
