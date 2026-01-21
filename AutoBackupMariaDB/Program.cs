@@ -57,7 +57,7 @@ public class ConfigArguments
         checkExisting();
 
         String fullTargetDir = createSub(); 
-        String command = $"{execPath} --backup --target-dir \"{fullTargetDir}\" --user {user} --password {password}";
+        String command = $"{execPath} --backup --target-dir \"{fullTargetDir}\" --user {user} --password=\"{password}\"";
         Console.WriteLine("executing command " + command);
         ProcessInfo = new ProcessStartInfo(command);
         Process = Process.Start(ProcessInfo);
